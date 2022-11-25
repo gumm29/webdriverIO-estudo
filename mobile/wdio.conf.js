@@ -1,6 +1,6 @@
-import type { Options } from '@wdio/types'
+const path = require('path')
 
-export const config: Options.Testrunner = {
+exports.config = {
     //
     // ====================
     // Runner Configuration
@@ -23,10 +23,6 @@ export const config: Options.Testrunner = {
         autoCompile: true,
         // see https://github.com/TypeStrong/ts-node#cli-and-programmatic-options
         // for all available options
-        tsNodeOpts: {
-            transpileOnly: true,
-            project: 'test/tsconfig.json'
-        }
         // tsconfig-paths is only used if "tsConfigPathsOpts" are provided, if you
         // do please make sure "tsconfig-paths" is installed as dependency
         // tsConfigPathsOpts: {
@@ -34,6 +30,8 @@ export const config: Options.Testrunner = {
         // }
     },
     port: 4723,
+    path: '/wd/hub',
+    plataforma: 'teste',
     //
     // ==================
     // Specify Test Files
@@ -73,7 +71,7 @@ export const config: Options.Testrunner = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -84,9 +82,9 @@ export const config: Options.Testrunner = {
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
-        maxInstances: 5,
+        maxInstances: 1,
         //
-        browserName: 'chrome',
+        //browserName: 'chrome',
         acceptInsecureCerts: true
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
@@ -124,10 +122,10 @@ export const config: Options.Testrunner = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'http://localhost',
+    //baseUrl: 'http://localhost',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 10000,
+    waitforTimeout: 50000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
@@ -162,16 +160,17 @@ export const config: Options.Testrunner = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: [['allure', {outputDir: 'allure-results'}]],
-
-
+    // reporters: [['allure', {outputDir: 'allure-results'}]],
+    reporters: [[ 'spec', {
+        realtimeReporting: true,
+    } ]],
     //
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         // <string[]> (file/dir) require files before executing features
-        require: ['./features/step-definitions/steps.ts'],
+        require: ['./features/step-definitions/*.js'],
         // <boolean> show full backtrace for errors
-        backtrace: false,
+        backtrace: true,
         // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
         requireModule: [],
         // <boolean> invoke formatters without executing steps
@@ -189,7 +188,9 @@ export const config: Options.Testrunner = {
         // <number> timeout for step definitions
         timeout: 60000,
         // <boolean> Enable this config to treat undefined definitions as warnings.
-        ignoreUndefinedDefinitions: false
+        ignoreUndefinedDefinitions: false,
+
+        plataforma: 'teste123'
     },
     
     //
@@ -268,8 +269,9 @@ export const config: Options.Testrunner = {
      * @param {ITestCaseHookParameter} world    world object containing information on pickle and test step
      * @param {Object}                 context  Cucumber World object
      */
-    // beforeScenario: function (world, context) {
-    // },
+    beforeScenario: function (world, context) {
+        driver.launchApp()
+    },
     /**
      *
      * Runs before a Cucumber Step.
