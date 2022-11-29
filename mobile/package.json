@@ -17,9 +17,10 @@
     },
     "scripts": {
         "wdio": "wdio run wdio.conf.js",
-        "android": "PLATAFORMA=123456 wdio run android.conf.js"
+        "android": "PLATAFORMA=androiD wdio run android.conf.js"
     },
     "dependencies": {
-        "@wdio/dot-reporter": "^7.26.0"
+        "@wdio/dot-reporter": "^7.26.0",
+        "js-yaml": "^4.1.0"
     }
 }

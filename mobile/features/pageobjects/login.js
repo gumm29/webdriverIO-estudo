@@ -1,6 +1,12 @@
+const get_screen_mappings = require('../util')
+
 class LoginPage {
 
-  get botaoIniciar () { return $('//android.widget.Button[1]') }
+  constructor(){
+    this.mapping = get_screen_mappings('home')
+  }
+
+  get botaoIniciar () { return $(this.mapping.ver) }
   get doe () { return $('//android.view.View[3]/android.view.View') }
   get togle () { return $('//android.widget.CheckBox/android.view.View[1]')}
   get tituloForm () { return $('//android.view.View/android.view.View[2]/android.view.View[3]')}
@@ -44,4 +50,4 @@ class LoginPage {
   }
 }
 
-module.exports = new LoginPage();
+module.exports = new LoginPage()
