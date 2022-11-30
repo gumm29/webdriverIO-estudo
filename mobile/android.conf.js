@@ -14,29 +14,6 @@ config.capabilities = [
     platformVersion: '10',
     app: path.resolve('./app/miau-dote.apk'),
     specs: ["features/*.feature"]
-  },
-  {
-    platformName: 'Android',
-    noReset: true,
-    fullReset: false,
-    autoLaunch: false,
-    maxInstances: 1,
-    automationName: 'uiautomator2',
-    deviceName: 'Android',
-    platformVersion: '10',
-    app: path.resolve('./app/miau-dote.apk'),
-    specs: ["features/*.feature"]
-  },{
-    platformName: 'Android',
-    noReset: false,
-    fullReset: true,
-    autoLaunch: false,
-    maxInstances: 1,
-    automationName: 'uiautomator2',
-    deviceName: 'Android',
-    platformVersion: '10',
-    app: path.resolve('./app/miau-dote.apk'),
-    specs: ["features/*.feature"]
   }
 ]
 
