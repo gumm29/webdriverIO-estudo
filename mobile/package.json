@@ -17,7 +17,7 @@
     },
     "scripts": {
         "wdio": "wdio run wdio.conf.js",
-        "android": "PLATAFORMA=androiD wdio run android.conf.js --cucumberOpts.tagExpression @login"
+        "android": "PLATAFORMA=teste wdio run android.conf.js --cucumberOpts.tagExpression @login"
     },
     "dependencies": {
         "@wdio/dot-reporter": "^7.26.0",
