@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+      "esModuleInterop": true,
+      "moduleResolution": "node",
+      // "module": "ESNext",
+      "types": [
+          "node",
+          "webdriverio/sync",
+          "@wdio/types",
+          "expect-webdriverio",
+          "@wdio/cucumber-framework",
+          "@wdio/appium-service"
+      ],
+      "target": "ES6"
+  }
+}

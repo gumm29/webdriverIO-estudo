@@ -1,13 +1,18 @@
-const get_screen_mappings = require('../util')
+import {get_screen_mappings, get_screen_mappings_json, get_running_filename} from '../util'
+// import  json_map from './elements/screen_mapping_home.json'
 
 class LoginPage {
+  mapping: any
+  mapping_json: any
 
   constructor(){
-    this.mapping = get_screen_mappings('home')
+    // this.mapping = get_screen_mappings('home')
+    this.mapping_json = get_screen_mappings_json('home')
   }
 
-  get botaoIniciar () { return $(this.mapping.ver) }
-  get doe () { return $('//android.view.View[3]/android.view.View') }
+  // get botaoIniciar () { return $(this.mapping.ver) }
+  get botaoIniciar () { return $('//android.widget.Button[1]') }
+  get doe () { return $('//android.view.View[3]/android.view.View')} //$(this.mapping_json['ver']) }
   get togle () { return $('//android.widget.CheckBox/android.view.View[1]')}
   get tituloForm () { return $('//android.view.View/android.view.View[2]/android.view.View[3]')}
   get nomeGato () { return $('//android.view.View[2]/android.view.View[4]/android.view.View[2]/android.view.View[1]/android.view.View[1]/android.view.View[1]/android.view.View/android.widget.EditText')}
@@ -50,4 +55,4 @@ class LoginPage {
   }
 }
 
-module.exports = new LoginPage()
+export default new LoginPage()
