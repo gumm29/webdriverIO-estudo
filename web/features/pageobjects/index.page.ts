@@ -1,11 +1,11 @@
 class Page{
   constructor() {}
 
-  async visit (): Promise<any>{
+  async visit (){
     await browser.url('/')
   }
 
-  async titulo (): Promise<any>{
+  async titulo (){
     await browser.getTitle()
   }
 }
